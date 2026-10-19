@@ -638,7 +638,7 @@ var PROJETS = [
       "B1.3.1": "Image professionnelle cohérente (site, GitHub), mentions légales et politique de confidentialité publiées, aucune donnée sensible exposée.",
       "B1.3.2": "Balises de description, titres hiérarchisés, URL stable et partageable (ancres, liens directs vers les fiches et les compétences).",
       "B1.6.2": "Veille sur les moteurs de jeu : sources officielles et presse spécialisée, fiches datées, résumé, impact, bilan.",
-      "B1.6.3": "Identité professionnelle : ce site, un dépôt GitHub public, une adresse de contact professionnelle.",
+      "B1.6.3": "Identité professionnelle visible et cohérente : ce site, un profil LinkedIn, un dépôt GitHub public et une adresse de contact professionnelle.",
       "B1.6.4": "Projet professionnel explicité : stage / alternance en développement en " + SESSION + ", puis poursuite d'études."
     },
     bloc2: ["B2.1"],
