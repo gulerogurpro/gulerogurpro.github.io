@@ -231,7 +231,7 @@ html.js:not([data-motion="reduced"]):not([data-jury="1"]) .section-tete.visible 
   transform: perspective(900px) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)); transition: transform 0.5s var(--ease);
 }
 .hero-photo .cadre::after { content: ""; position: absolute; inset: -40px; z-index: -1; border-radius: 50%; background: radial-gradient(circle, rgba(var(--accent-rgb), 0.35), transparent 65%); filter: blur(10px); }
-.hero-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; }
+.hero-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; }
 .hero-photo .etiquette { position: absolute; left: 22px; bottom: 22px; padding: 6px 12px; border-radius: 999px; background: rgba(10, 11, 16, 0.75); color: #F2F3F7; font-family: var(--font-mono); font-size: 0.72rem; backdrop-filter: blur(8px); }
 .hero h1 { font-size: clamp(3.2rem, 9vw, 7.5rem); font-weight: 800; line-height: 0.95; margin: 10px 0 24px; }
 .hero h1 span { display: block; }
