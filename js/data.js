@@ -642,11 +642,11 @@ var PROJETS = [
       "B1.6.4": "Projet professionnel explicité : stage / alternance en développement en " + SESSION + ", puis poursuite d'études."
     },
     bloc2: ["B2.1"],
-    contexte: "L'épreuve E5 exige un portfolio accessible retraçant le parcours, les réalisations et les compétences du bloc 1. Je l'ai conçu pour que le jury trouve chaque preuve en un clic, et pour qu'il fonctionne aussi bien hébergé qu'ouvert depuis une clé USB.",
+    contexte: "L'épreuve E5 exige un portfolio accessible retraçant le parcours, les réalisations et les compétences du bloc 1. Je l'ai conçu pour que chaque preuve se trouve en un clic, et pour qu'il fonctionne aussi bien hébergé qu'ouvert depuis une clé USB.",
     environnement: ["HTML / CSS / JavaScript sans bibliothèque, Google Fonts avec polices de repli", "Pas de serveur : tout fonctionne en file://", "Documentation : référentiel BTS SIO, circulaire nationale, MDN"],
-    demarche: ["Recenser les sous-compétences du bloc 1 avec leurs libellés exacts.", "Décrire chaque réalisation en dix rubriques identiques.", "Relier chaque coche de la grille à une preuve précise.", "Rédiger la veille à partir d'articles ouverts et vérifiés, avec date, source et impact.", "Vérifier accessibilité (clavier, contraste, mouvement réduit) et impression (mode jury)."],
+    demarche: ["Recenser les sous-compétences du bloc 1 avec leurs libellés exacts.", "Décrire chaque réalisation en dix rubriques identiques.", "Relier chaque coche de la grille à une preuve précise.", "Rédiger la veille à partir d'articles ouverts et vérifiés, avec date, source et impact.", "Vérifier accessibilité (clavier, contraste, mouvement réduit) et impression (Ctrl+P)."],
     productions: ["Site statique en 5 fichiers", "Grille de compétences interactive", "Tableau de synthèse (version web)", "21 fiches de veille"],
-    resultats: ["Fonctionne hébergé et hors ligne", "Mode jury imprimable", "Thème clair pour la projection"],
+    resultats: ["Fonctionne hébergé et hors ligne", "Version imprimable avec toutes les fiches dépliées", "Thème clair pour la projection"],
     difficultes: ["Rester honnête : les compétences non couvertes (B1.2) sont affichées comme telles plutôt que gonflées, et l'usage d'un assistant IA est indiqué là où il a servi.", "Garder la cohérence des intitulés entre cartes, fiches, grille et tableau de synthèse : une seule source de données."],
     securite: ["Aucun cookie, aucun traceur ; localStorage uniquement pour le thème et les préférences d'animation", "Formulaire de contact en mailto : aucune donnée transmise à un serveur", "Mentions légales et politique de confidentialité publiées"],
     liens: [{ label: "Site en ligne", url: "https://gulerogurpro.github.io/" }, { label: "Code source du site", url: "https://github.com/gulerogurpro/gulerogurpro.github.io" }],
@@ -737,5 +737,5 @@ var TECHNOS = [
 /* ---------- E6 : réalisations pressenties pour l'option SLAM ---------- */
 var E6 = [
   { slug: "fusee", couvre: ["B2.1", "B2.3"], acces: "Jeu publié sur Roblox sous le nom « Rocket Clicker » : roblox.com/games/86163553911530 ; code synchronisé par Rojo, consultable sur demande", pourquoi: "Solution applicative complète (client / serveur) avec une vraie couche de données : schéma de profil versionné, migrations, verrou de session, classement OrderedDataStore. Couvre la conception, le développement et la gestion des données." },
-  { slug: "mud", couvre: ["B2.1", "B2.2"], acces: "Dépôt public github.com/gulerogurpro/mud-dart-tp5 (devcontainer prêt à l'emploi)", pourquoi: "Base de code petite, propre et entièrement testée (37 tests, 0 avertissement) : idéale pour traiter en une heure une expression de besoins du jury — ajouter une fonctionnalité en TDD, corriger un dysfonctionnement, mettre à jour tests et documentation." }
+  { slug: "mud", couvre: ["B2.1", "B2.2"], acces: "Dépôt public github.com/gulerogurpro/mud-dart-tp5 (devcontainer prêt à l'emploi)", pourquoi: "Base de code petite, propre et entièrement testée (37 tests, 0 avertissement) : idéale pour traiter en une heure une expression de besoins donnée le jour de l'épreuve — ajouter une fonctionnalité en TDD, corriger un dysfonctionnement, mettre à jour tests et documentation." }
 ];

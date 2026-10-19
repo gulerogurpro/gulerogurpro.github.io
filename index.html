@@ -17,15 +17,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/style.css?v=12">
   <script>
-    // Préférences appliquées avant le premier rendu (thème, mouvement, mode jury)
+    // Préférences appliquées avant le premier rendu (thème, mouvement)
     (function () {
       var h = document.documentElement; h.classList.remove("no-js"); h.classList.add("js");
       try {
         var t = localStorage.getItem("theme"); if (t) h.dataset.theme = t;
         var m = localStorage.getItem("motion"); if (m) h.dataset.motion = m;
-        if (localStorage.getItem("jury") === "1") h.dataset.jury = "1";
       } catch (e) { /* stockage indisponible */ }
     })();
   </script>
@@ -52,7 +51,6 @@
     </nav>
     <div class="nav-actions">
       <button type="button" class="btn-nav" id="btn-palette" aria-haspopup="dialog">Rechercher <kbd>Ctrl K</kbd></button>
-      <button type="button" class="btn-nav" data-action="jury" aria-pressed="false" title="Lecture, projection et impression : sans animations, fiches dépliées">Mode jury</button>
       <button type="button" class="btn-nav" id="btn-menu" aria-expanded="false" aria-controls="menu-mobile" aria-label="Menu">☰</button>
     </div>
   </header>
@@ -69,7 +67,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
-  <p class="bandeau-jury">Mode jury activé : animations coupées, toutes les fiches de réalisation sont dépliées sous la grille des projets. Ctrl+P pour imprimer ou exporter en PDF.</p>
 
   <main id="contenu">
     <!-- ===== HERO ===== -->
@@ -226,7 +223,7 @@
         <div class="synthese-grille">
           <div class="table-wrap" id="tableau-synthese" data-reveal></div>
           <div class="note-synthese glass" data-reveal>
-            <p><strong>Stages et attestations.</strong> Les réalisations en milieu professionnel seront ajoutées à l'issue du stage de deuxième année, avec l'attestation signée correspondante (modèle de l'annexe IX). Les projets personnels sont publiés (Roblox) ou documentés (dépôt Git, captures) et restent consultables par le jury.</p>
+            <p><strong>Stages et attestations.</strong> Les réalisations en milieu professionnel seront ajoutées à l'issue du stage de deuxième année, avec l'attestation signée correspondante (modèle de l'annexe IX). Les projets personnels sont publiés (Roblox) ou documentés (dépôt Git, captures) et restent consultables à tout moment.</p>
           </div>
         </div>
       </div>
@@ -354,7 +351,6 @@
         <a href="mentions-legales.html">Mentions légales et confidentialité</a>
         <button type="button" data-action="theme" aria-pressed="false">Thème clair</button>
         <button type="button" data-action="motion" aria-pressed="false">Réduire les animations</button>
-        <button type="button" data-action="jury" aria-pressed="false">Mode jury</button>
         <a href="#top">Haut de page ↑</a>
       </nav>
     </div>
@@ -373,7 +369,7 @@
     </div>
   </div>
 
-  <script src="js/data.js?v=11"></script>
-  <script src="js/main.js?v=11"></script>
+  <script src="js/data.js?v=12"></script>
+  <script src="js/main.js?v=12"></script>
 </body>
 </html>

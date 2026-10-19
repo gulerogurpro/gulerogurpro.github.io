@@ -15,7 +15,7 @@
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { /* stockage refusé (navigation privée, file://) */ } }
   };
-  function motionReduced() { return reduceQuery.matches || html.dataset.motion === "reduced" || html.dataset.jury === "1"; }
+  function motionReduced() { return reduceQuery.matches || html.dataset.motion === "reduced"; }
 
   /* ---------- Utilitaires ---------- */
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -158,7 +158,7 @@
   }
   document.addEventListener("click", function (e) {
     var b = e.target.closest(".ouvrir"); if (b) ouvrirFiche(b.dataset.slug, b);
-    // galerie : dans le dialog comme dans les fiches dépliées du mode jury
+    // galerie : dans le dialog comme dans les fiches dépliées pour l'impression
     var nb = e.target.closest(".galerie-nav button"); if (nb) galerieDefile(nb.closest(".galerie"), nb.classList.contains("suiv") ? 1 : -1);
   });
 
@@ -329,7 +329,6 @@
       c.subs.forEach(function (s) { pItems.push({ cat: "sous-compétence", label: s.id + " " + s.label, run: function () { if (compActive !== c.id) setComp(c.id, false); $("#competences").scrollIntoView(); } }); });
     });
     VEILLE.entries.forEach(function (e, i) { pItems.push({ cat: "veille", label: e.title, run: function () { var el = $("#veille-" + i); $$("#veille-filtres .chip")[0].click(); el.scrollIntoView({ block: "center" }); el.classList.add("cible"); setTimeout(function () { el.classList.remove("cible"); }, 2500); } }); });
-    pItems.push({ cat: "commande", label: "Mode jury (lecture, projection, impression)", run: toggleJury });
     pItems.push({ cat: "commande", label: "Thème clair / sombre", run: toggleTheme });
     pItems.push({ cat: "commande", label: "Réduire les animations", run: toggleMotion });
     pItems.push({ cat: "commande", label: "Copier la grille des compétences en texte", run: copierMatrice });
@@ -366,15 +365,7 @@
   });
   $("#btn-palette").addEventListener("click", ouvrirPalette);
 
-  /* ---------- Préférences : jury, thème, mouvement ---------- */
-  function toggleJury() {
-    var on = html.dataset.jury !== "1";
-    if (on) html.dataset.jury = "1"; else delete html.dataset.jury;
-    store.set("jury", on ? "1" : null);
-    $$("[data-action=jury]").forEach(function (b) { b.setAttribute("aria-pressed", on); });
-    arreterCanvas(); demarrerCanvas();
-    setTimeout(function () { dessinerGitlog(); revelerTout(); }, 50);
-  }
+  /* ---------- Préférences : thème, mouvement ---------- */
   function toggleTheme() {
     var light = html.dataset.theme !== "light";
     if (light) html.dataset.theme = "light"; else delete html.dataset.theme;
@@ -390,8 +381,8 @@
     arreterCanvas(); demarrerCanvas(); dessinerGitlog(); revelerTout();
   }
   $$("[data-action]").forEach(function (b) {
-    b.addEventListener("click", { jury: toggleJury, theme: toggleTheme, motion: toggleMotion }[b.dataset.action]);
-    b.setAttribute("aria-pressed", { jury: html.dataset.jury === "1", theme: html.dataset.theme === "light", motion: html.dataset.motion === "reduced" }[b.dataset.action]);
+    b.addEventListener("click", { theme: toggleTheme, motion: toggleMotion }[b.dataset.action]);
+    b.setAttribute("aria-pressed", { theme: html.dataset.theme === "light", motion: html.dataset.motion === "reduced" }[b.dataset.action]);
   });
 
   /* ---------- Copier ---------- */
@@ -531,7 +522,6 @@
   function boucle() { dessiner(false); rafCanvas = requestAnimationFrame(boucle); }
   function dessinerStatique() { dimensionner(); dessiner(true); }
   function demarrerCanvas() {
-    if (html.dataset.jury === "1") { ctx.clearRect(0, 0, canvas.width, canvas.height); return; }
     lireCouleurs(); couleur = cible.slice();
     if (motionReduced()) { dessinerStatique(); return; }
     dimensionner(); if (!rafCanvas && !document.hidden) rafCanvas = requestAnimationFrame(boucle);
