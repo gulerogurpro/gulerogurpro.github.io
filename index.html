@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ogur Guler — Portfolio BTS SIO (SLAM)</title>
+  <meta name="description" content="Portfolio d'Ogur Guler, étudiant en BTS SIO option SLAM à Marseille : réalisations (jeux Roblox en Luau, web, Dart, Godot), grille des compétences du bloc 1, veille technologique sur les moteurs de jeu.">
+  <meta name="author" content="Ogur Guler">
+  <meta name="theme-color" content="#0A0B10">
+  <meta property="og:title" content="Ogur Guler — Portfolio BTS SIO">
+  <meta property="og:description" content="Jeux Roblox, web, Dart, Godot : réalisations, compétences du bloc 1 et veille sur les moteurs de jeu.">
+  <meta property="og:image" content="https://gulerogurpro.github.io/img/medieval-miniature.jpg">
+  <meta property="og:url" content="https://gulerogurpro.github.io/">
+  <link rel="canonical" href="https://gulerogurpro.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0B10'/%3E%3Ctext x='16' y='22' font-size='17' font-family='monospace' font-weight='700' text-anchor='middle' fill='%238B9CFF'%3EOG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=6">
+  <script>
+    // Préférences appliquées avant le premier rendu (thème, mouvement, mode jury)
+    (function () {
+      var h = document.documentElement; h.classList.remove("no-js"); h.classList.add("js");
+      try {
+        var t = localStorage.getItem("theme"); if (t) h.dataset.theme = t;
+        var m = localStorage.getItem("motion"); if (m) h.dataset.motion = m;
+        if (localStorage.getItem("jury") === "1") h.dataset.jury = "1";
+      } catch (e) { /* stockage indisponible */ }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <canvas id="ciel" aria-hidden="true"></canvas>
+  <div class="curseur" aria-hidden="true"><span class="curseur-point"></span><span class="curseur-anneau"><span class="curseur-mot"></span></span></div>
+
+  <header class="nav" id="nav">
+    <a class="nav-logo mono" href="#top"><span class="ok">~</span>/ogur</a>
+    <nav aria-label="Sections du portfolio">
+      <ul>
+        <li><a href="#profil"><span class="n">01</span>profil</a></li>
+        <li><a href="#parcours"><span class="n">02</span>parcours</a></li>
+        <li><a href="#realisations"><span class="n">03</span>réalisations</a></li>
+        <li><a href="#competences"><span class="n">04</span>compétences</a></li>
+        <li><a href="#synthese"><span class="n">05</span>synthèse</a></li>
+        <li><a href="#veille"><span class="n">06</span>veille</a></li>
+        <li><a href="#developpement"><span class="n">07</span>développement</a></li>
+        <li><a href="#e6"><span class="n">08</span>E6</a></li>
+        <li><a href="#contact"><span class="n">09</span>contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <span class="dispo">Disponible stage / alternance <span data-session>2027</span></span>
+      <button type="button" class="btn-nav" id="btn-palette" aria-haspopup="dialog">Rechercher <kbd>Ctrl K</kbd></button>
+      <button type="button" class="btn-nav" data-action="jury" aria-pressed="false" title="Lecture, projection et impression : sans animations, fiches dépliées">Mode jury</button>
+      <button type="button" class="btn-nav" id="btn-menu" aria-expanded="false" aria-controls="menu-mobile" aria-label="Menu">☰</button>
+    </div>
+  </header>
+  <div id="menu-mobile">
+    <ul>
+      <li><a href="#profil"><span class="n">01</span>Profil</a></li>
+      <li><a href="#parcours"><span class="n">02</span>Parcours</a></li>
+      <li><a href="#realisations"><span class="n">03</span>Réalisations</a></li>
+      <li><a href="#competences"><span class="n">04</span>Compétences</a></li>
+      <li><a href="#synthese"><span class="n">05</span>Synthèse</a></li>
+      <li><a href="#veille"><span class="n">06</span>Veille</a></li>
+      <li><a href="#developpement"><span class="n">07</span>Développement</a></li>
+      <li><a href="#e6"><span class="n">08</span>E6 — SLAM</a></li>
+      <li><a href="#contact"><span class="n">09</span>Contact</a></li>
+    </ul>
+  </div>
+  <p class="bandeau-jury">Mode jury activé : animations coupées, toutes les fiches de réalisation sont dépliées sous la grille des projets. Ctrl+P pour imprimer ou exporter en PDF.</p>
+
+  <main id="contenu">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top" aria-label="Présentation">
+      <div class="conteneur hero-grille">
+        <div class="hero-photo">
+          <div class="cadre glass">
+            <img src="img/photo.png" alt="Portrait d'Ogur Guler" width="245" height="315" fetchpriority="high">
+            <span class="etiquette">ogur@marseille</span>
+          </div>
+        </div>
+        <div>
+          <p class="mono">~/ogur $ whoami</p>
+          <h1><span class="l1">Ogur</span><span class="l2 degrade">Guler</span><span class="l3">Développeur en formation.</span></h1>
+          <p class="sous-titre">Étudiant en BTS SIO option SLAM à Marseille. Je construis des jeux, des sites et des outils — proprement, avec un serveur qui a toujours raison.</p>
+          <p class="statut" id="statut" aria-live="polite" data-texte="BTS SIO 2025 – 2027 · Lycée Marie Curie · Marseille · Session 2027 · Permis B"><span class="texte"></span><span class="caret" aria-hidden="true"></span></p>
+          <div class="hero-actions">
+            <a class="btn btn-primaire magnetic" href="#realisations" data-cursor="voir"><span>Voir les réalisations</span></a>
+            <a class="btn magnetic" href="#competences" data-cursor="prouver"><span>Grille des compétences</span></a>
+            <a class="btn magnetic" href="#contact" data-cursor="écrire"><span>Me contacter</span></a>
+            <!-- Ajouter cv.pdf dans le dossier puis retirer les commentaires :
+            <a class="btn magnetic" href="cv.pdf" download data-cursor="cv"><span>Télécharger le CV</span></a> -->
+          </div>
+          <p class="indice"><kbd>Ctrl</kbd> + <kbd>K</kbd> pour chercher une compétence, une réalisation ou une fiche de veille.</p>
+        </div>
+      </div>
+      <div class="defiler" aria-hidden="true"><span></span>défiler</div>
+    </section>
+
+    <!-- ===== 01 PROFIL ===== -->
+    <section class="section" id="profil" aria-labelledby="t-profil">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">01 — Profil</span>
+          <h2 id="t-profil"><span class="wipe">Qui je suis</span></h2>
+        </div>
+        <div class="profil-grille">
+          <div data-reveal>
+            <p class="citation">« J'aime comprendre comment ça marche, puis le reconstruire mieux. »</p>
+            <p>Je m'appelle Ogur Guler, j'ai 20 ans et je suis en deuxième année de BTS Services informatiques aux organisations au lycée Marie Curie, à Marseille. Après un bac STI2D option SIN, j'ai choisi l'option SLAM parce que ce que j'aime, c'est construire des logiciels complets : de l'idée au déploiement.</p>
+            <p>Mon terrain de jeu, ce sont les jeux vidéo. J'ai publié deux jeux sur Roblox écrits en Luau, et deux autres sont en préparation, avec un principe que je ne lâche jamais : <strong>le serveur a toujours raison</strong>. Sauvegardes verrouillées, entrées validées, limitation de débit : ce sont des réflexes que mes projets m'ont appris, et que je retrouve dans le bloc cybersécurité du BTS.</p>
+            <p>En formation, j'apprends à travailler en mode projet (Git, tests, TDD en Dart), le web (HTML, CSS, JavaScript, PHP), les bases de données (MySQL, SQL Server) et l'administration Windows Server. Mon objectif : un stage de deuxième année en développement, puis une alternance ou une poursuite d'études en informatique.</p>
+          </div>
+          <div data-reveal style="--i:1">
+            <div class="fiche-id glass">
+              <dl>
+                <dt>Nom</dt><dd>Ogur GULER</dd>
+                <dt>Formation</dt><dd>BTS SIO option SLAM, 2e année</dd>
+                <dt>Session</dt><dd><span data-session>2027</span> — formation initiale</dd>
+                <dt>Ville</dt><dd>Marseille — Permis B</dd>
+                <dt>Langues</dt><dd>Français C2 · Anglais B1 · Italien A2</dd>
+                <dt>Objectif</dt><dd>Stage puis alternance en développement</dd>
+                <dt>Portfolio</dt><dd><a href="https://gulerogurpro.github.io/">gulerogurpro.github.io</a></dd>
+              </dl>
+            </div>
+            <div class="chiffres">
+              <div class="chiffre glass"><b>2</b><span>jeux Roblox publiés</span></div>
+              <div class="chiffre glass"><b>9</b><span>réalisations documentées</span></div>
+              <div class="chiffre glass"><b>21</b><span>fiches de veille</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="profil-bas">
+          <div class="carte-simple glass" data-reveal>
+            <h3>Langues</h3>
+            <ul class="langues">
+              <li><span>Français</span><span class="mono">C2 — langue maternelle</span><span class="jauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+              <li><span>Anglais</span><span class="mono">B1 — lecture de documentation technique</span><span class="jauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li>
+              <li><span>Italien</span><span class="mono">A2</span><span class="jauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></li>
+            </ul>
+          </div>
+          <div class="carte-simple glass" data-reveal style="--i:1">
+            <h3>Loisirs</h3>
+            <div class="loisirs">
+              <div class="glass"><span aria-hidden="true">🎮</span>Jeux vidéo</div>
+              <div class="glass"><span aria-hidden="true">⚽</span>Football</div>
+              <div class="glass"><span aria-hidden="true">🎬</span>Cinéma SF et historique</div>
+              <div class="glass"><span aria-hidden="true">💻</span>Code et projets perso</div>
+              <div class="glass"><span aria-hidden="true">📚</span>Animés et mangas</div>
+              <div class="glass"><span aria-hidden="true">🎨</span>Création graphique</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 PARCOURS ===== -->
+    <section class="section" id="parcours" aria-labelledby="t-parcours">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">02 — Parcours de professionnalisation</span>
+          <h2 id="t-parcours"><span class="wipe">git log</span></h2>
+          <p class="sous">Chaque étape est réelle et vérifiable sur mon CV. Les projets apparaissent comme des tags sur la période où ils ont été menés.</p>
+        </div>
+        <div class="gitlog glass" data-reveal>
+          <p class="prompt mono"><b>ogur@marseille</b>:~$ git log --graph --dates</p>
+          <div class="gitlog-corps">
+            <svg id="gitlog-svg" aria-hidden="true" preserveAspectRatio="none"></svg>
+            <ol id="gitlog-liste"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 03 RÉALISATIONS ===== -->
+    <section class="section" id="realisations" aria-labelledby="t-realisations">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">03 — Réalisations professionnelles</span>
+          <h2 id="t-realisations"><span class="wipe">Ce que j'ai construit</span></h2>
+          <p class="sous">Chaque fiche suit les mêmes dix rubriques : intitulé, organisation, contexte, compétences mobilisées, environnement, démarche, productions et preuves, résultats, difficultés, liens. Filtrer par compétence allume les réalisations qui la prouvent.</p>
+        </div>
+        <div class="chips" id="filtres-type" role="group" aria-label="Filtrer par type">
+          <button type="button" class="chip" data-t="all" aria-pressed="true">Toutes</button>
+          <button type="button" class="chip" data-t="perso" aria-pressed="false">Projets personnels</button>
+          <button type="button" class="chip" data-t="formation" aria-pressed="false">Formation</button>
+          <span class="sep" aria-hidden="true"></span>
+          <button type="button" class="chip comp" data-comp-btn="B1.1" aria-pressed="false">B1.1 Patrimoine</button>
+          <button type="button" class="chip comp" data-comp-btn="B1.2" aria-pressed="false">B1.2 Incidents</button>
+          <button type="button" class="chip comp" data-comp-btn="B1.3" aria-pressed="false">B1.3 Présence en ligne</button>
+          <button type="button" class="chip comp" data-comp-btn="B1.4" aria-pressed="false">B1.4 Mode projet</button>
+          <button type="button" class="chip comp" data-comp-btn="B1.5" aria-pressed="false">B1.5 Mise à disposition</button>
+          <button type="button" class="chip comp" data-comp-btn="B1.6" aria-pressed="false">B1.6 Développement pro</button>
+        </div>
+        <p class="compteur-comp" id="compteur-comp" aria-live="polite"></p>
+        <div class="bento" id="grille-projets"></div>
+        <div id="fiches-jury"></div>
+      </div>
+    </section>
+
+    <!-- ===== 04 COMPÉTENCES ===== -->
+    <section class="section alt" id="competences" aria-labelledby="t-competences">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">04 — Compétences du bloc 1 · épreuve E5</span>
+          <h2 id="t-competences"><span class="wipe">Où chaque compétence est prouvée</span></h2>
+          <p class="sous">Support et mise à disposition de services informatiques : six compétences, vingt-deux sous-compétences, avec les libellés du référentiel. Cliquer sur une compétence projette ses preuves sur toute la page ; chaque coche ouvre la fiche à la bonne rubrique.</p>
+        </div>
+        <div class="matrice-outils">
+          <p class="mono" id="compteur-matrice"></p>
+          <button type="button" class="btn btn-petit" id="copier-matrice" data-cursor="copier">Copier la grille en texte</button>
+        </div>
+        <p class="mono" style="margin:-8px 0 14px">Lignes : compétences et sous-compétences du bloc 1 (libellés du référentiel). Colonnes : réalisations. Chaque coche renvoie à la preuve dans la fiche.</p>
+        <div class="table-wrap" id="matrice" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ===== 05 SYNTHÈSE ===== -->
+    <section class="section synthese" id="synthese" aria-labelledby="t-synthese">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">05 — Tableau de synthèse · session <span data-session>2027</span></span>
+          <h2 id="t-synthese"><span class="wipe">Tableau de synthèse</span></h2>
+          <p class="sous">Version web du tableau de synthèse E5 : mêmes intitulés courts que les fiches, période, productions associées et compétences du bloc 1 mobilisées. Le fichier officiel de la circulaire est rempli à partir de ces données.</p>
+        </div>
+        <div class="synthese-grille">
+          <div class="table-wrap" id="tableau-synthese" data-reveal></div>
+          <div class="note-synthese glass" data-reveal>
+            <p><strong>Stages et attestations.</strong> Les réalisations en milieu professionnel seront ajoutées à l'issue du stage de deuxième année, avec l'attestation signée correspondante (modèle de l'annexe IX). Les projets personnels sont publiés (Roblox) ou documentés (dépôt Git, captures) et restent consultables par le jury.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 06 VEILLE ===== -->
+    <section class="section" id="veille" aria-labelledby="t-veille">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">06 — Veille technologique</span>
+          <h2 id="t-veille"><span class="wipe">Les moteurs de jeu</span></h2>
+          <p class="sous" id="veille-compte"></p>
+        </div>
+        <div class="veille-grille">
+          <aside class="veille-gauche">
+            <div class="glass" data-reveal><h3><span class="num">1</span>Thème</h3><p id="veille-theme"></p><p id="veille-pourquoi"></p></div>
+            <div class="glass" data-reveal style="--i:1"><h3><span class="num">2</span>Méthode et outils</h3><ul id="veille-methode"></ul></div>
+            <div class="glass" data-reveal style="--i:2"><h3><span class="num">4</span>Bilan : ce que la veille a changé</h3><ul id="veille-bilan"></ul></div>
+          </aside>
+          <div>
+            <h3 class="mono" style="font-family:var(--font-mono);font-weight:500;font-size:.85rem;color:var(--accent)">3 · Fiches de veille, de la plus récente à la plus ancienne</h3>
+            <div class="chips" id="veille-filtres" role="group" aria-label="Filtrer par moteur">
+              <button type="button" class="chip" data-m="all" aria-pressed="true">Tous</button>
+              <button type="button" class="chip" data-m="Unreal Engine" aria-pressed="false">Unreal Engine</button>
+              <button type="button" class="chip" data-m="Unity" aria-pressed="false">Unity</button>
+              <button type="button" class="chip" data-m="Godot" aria-pressed="false">Godot</button>
+              <button type="button" class="chip" data-m="Roblox" aria-pressed="false">Roblox</button>
+            </div>
+            <div class="veille-liste" id="veille-liste"></div>
+            <h3 style="margin-top:36px">Tendances par moteur</h3>
+            <div class="tendances" id="tendances"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 07 DÉVELOPPEMENT PROFESSIONNEL ===== -->
+    <section class="section alt" id="developpement" aria-labelledby="t-dev">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">07 — Développement professionnel · B1.6</span>
+          <h2 id="t-dev"><span class="wipe">Mon environnement</span></h2>
+        </div>
+        <div class="dev-grille">
+          <div class="glass" data-reveal>
+            <h3>Environnement technique</h3>
+            <ul class="technos" id="technos"></ul>
+            <p class="legende mono">Légende : 1 découverte (vu en cours) · 2 pratiqué (utilisé dans un projet) · 3 à l'aise (plusieurs projets, en autonomie).</p>
+          </div>
+          <div class="glass" data-reveal style="--i:1">
+            <h3>Identité professionnelle</h3>
+            <ul class="liens-pro">
+              <li><a href="https://github.com/gulerogurpro" target="_blank" rel="noopener">GitHub <span>gulerogurpro</span></a></li>
+              <li><a href="https://www.roblox.com/games/107366286112214" target="_blank" rel="noopener">Jeu publié sur Roblox <span>Échapper au Minus</span></a></li>
+              <li><a href="#contact">E-mail professionnel <span>gulerogur.pro@gmail.com</span></a></li>
+            </ul>
+            <h4 style="margin-top:20px">Certifications</h4>
+            <p>Certification PIX (2023 – 2024). Visées : Unity Certified Associate et TOEIC pour consolider l'anglais technique.</p>
+            <h4>Environnement d'apprentissage</h4>
+            <p>Documentation officielle (Roblox Creator Docs, Godot, MDN), Roblox DevForum, chaînes YouTube de développement de jeux, tutoriels Brackeys, cours interactifs que j'ai conçus et relus, dépôt GitHub.</p>
+          </div>
+          <div class="glass" data-reveal style="--i:2">
+            <h3>Projet professionnel</h3>
+            <p>Devenir développeur d'applications, avec une affinité pour le temps réel et le jeu vidéo : logique serveur, persistance, outillage.</p>
+            <h4>Prochaines étapes</h4>
+            <ol>
+              <li>Stage de deuxième année en développement (session <span data-session>2027</span>) : couvrir la compétence B1.2 (incidents et demandes) sur un vrai outil de ticketing.</li>
+              <li>Ajouter un projet avec base de données relationnelle (MySQL ou SQL Server) et PHP ou C# pour l'épreuve E6.</li>
+              <li>Apprendre Verse via UEFN et consolider Godot : ne pas dépendre d'un seul écosystème.</li>
+            </ol>
+            <h4>Besoins de formation identifiés</h4>
+            <p>SQL avancé et modélisation, sécurité applicative (OWASP), anglais technique oral.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 08 E6 ===== -->
+    <section class="section" id="e6" aria-labelledby="t-e6">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">08 — Épreuve E6 · option SLAM</span>
+          <h2 id="t-e6"><span class="wipe">Deux réalisations pour le bloc 2</span></h2>
+          <p class="sous">Conception et développement d'applications. Les deux réalisations réunies couvrent les trois compétences du bloc 2 ; la gestion des données repose aujourd'hui sur un stockage non relationnel (DataStore, OrderedDataStore) et sera consolidée par un projet MySQL / SQL Server en deuxième année. Environnement : deux langages (Luau, Dart), gestion de versions (Git), tests automatisés, services distants de la plateforme Roblox.</p>
+        </div>
+        <div class="e6-grille" id="e6-cartes"></div>
+        <div class="e6-bloc2 table-wrap" id="e6-bloc2" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ===== 09 CONTACT ===== -->
+    <section class="section contact" id="contact" aria-labelledby="t-contact">
+      <div class="conteneur">
+        <div class="section-tete">
+          <span class="section-num mono">09 — Contact</span>
+          <h2 id="t-contact"><span class="wipe">Travaillons ensemble<span class="point">.</span></span></h2>
+        </div>
+        <div class="contact-grille">
+          <div data-reveal>
+            <p class="sous-titre">Je cherche un stage, puis une alternance, en développement pour <span data-session>2027</span>. Marseille et alentours, télétravail possible. Permis B.</p>
+            <p class="mono" style="font-size:1rem;color:var(--text)"><span id="email">gulerogur.pro@gmail.com</span></p>
+            <div class="contact-actions">
+              <button type="button" class="btn btn-primaire magnetic" id="copier-email" data-cursor="copier"><span>Copier l'e-mail</span></button>
+              <a class="btn magnetic" href="mailto:gulerogur.pro@gmail.com" data-cursor="écrire"><span>Écrire un e-mail</span></a>
+              <a class="btn magnetic" href="https://github.com/gulerogurpro" target="_blank" rel="noopener" data-cursor="ouvrir"><span>GitHub</span></a>
+            </div>
+          </div>
+          <form class="form glass" id="form-contact" data-reveal style="--i:1">
+            <label>Votre nom <input type="text" id="f-nom" name="nom" required autocomplete="name"></label>
+            <label>Votre message <textarea id="f-message" name="message" required></textarea></label>
+            <button type="submit" class="btn btn-primaire"><span>Ouvrir dans ma messagerie</span></button>
+            <p class="note">Le formulaire ouvre votre application de messagerie avec le message pré-rempli : aucune donnée n'est envoyée à un serveur.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="conteneur pied">
+      <div>Conçu par Ogur Guler — HTML, CSS, JavaScript, 0 framework · © <span id="annee">2026</span> · Marseille</div>
+      <nav aria-label="Pied de page">
+        <a href="mentions-legales.html">Mentions légales et confidentialité</a>
+        <button type="button" data-action="theme" aria-pressed="false">Thème clair</button>
+        <button type="button" data-action="motion" aria-pressed="false">Réduire les animations</button>
+        <button type="button" data-action="jury" aria-pressed="false">Mode jury</button>
+        <a href="#top">Haut de page ↑</a>
+      </nav>
+    </div>
+  </footer>
+
+  <dialog id="fiche" aria-labelledby="fiche-titre">
+    <div class="dialog-barre"><span class="mono chemin"></span><button type="button" class="dialog-fermer" aria-label="Fermer la fiche">✕</button></div>
+    <div class="dialog-contenu"></div>
+  </dialog>
+
+  <div id="palette" hidden role="dialog" aria-modal="true" aria-label="Palette de commandes">
+    <div class="palette-boite">
+      <input type="text" placeholder="Chercher une compétence, une réalisation, une fiche de veille, une commande…" aria-label="Rechercher" autocomplete="off" spellcheck="false">
+      <ul role="listbox" aria-label="Résultats"></ul>
+      <div class="palette-pied"><span id="palette-statut" aria-live="polite"></span><span>↑↓ naviguer · Entrée ouvrir · Échap fermer</span></div>
+    </div>
+  </div>
+
+  <script src="js/data.js?v=6"></script>
+  <script src="js/main.js?v=6"></script>
+</body>
+</html>
