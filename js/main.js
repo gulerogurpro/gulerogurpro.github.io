@@ -68,7 +68,7 @@
     return '<article class="carte glass' + (p.vedette ? " vedette" : "") + '" data-reveal style="--i:' + (i % 6) + '" data-slug="' + p.slug + '" data-type="' + p.type + '" data-comps="' + compsOf(p).join(" ") + '">' +
       '<span class="type-tag">' + TYPES[p.type] + "</span>" +
       '<div class="carte-media">' + media + "</div>" +
-      '<div class="carte-corps"><div class="mono">~/realisations/' + p.slug + "</div>" +
+      '<div class="carte-corps">' +
       "<h3>" + fr(p.titre) + "</h3><p>" + fr(p.pitch) + "</p>" +
       '<div class="carte-meta mono"><span>' + fr(p.periode) + "</span><span>" + fr(p.modalite.split(" : ")[0].split(" (")[0]) + "</span></div>" +
       '<div class="puces">' + badges(p) + "</div>" +
@@ -81,14 +81,14 @@
 
   function fiche(p, enPage) {
     var id = (enPage ? "jury-" : "fiche-") + p.slug;
-    var r = function (n, titre, corps) { return '<section class="rubrique" id="' + id + "-r" + n + '"><h3><span class="num">' + String(n).padStart(2, "0") + "</span>" + titre + "</h3>" + corps + "</section>"; };
+    var r = function (n, titre, corps) { return '<section class="rubrique" id="' + id + "-r" + n + '"><h3>' + titre + "</h3>" + corps + "</section>"; };
     var galerie = p.images.length ? '<figure class="galerie" data-index="0">' +
       '<img src="' + p.images[0].src + '" alt="' + esc(p.images[0].alt) + '" loading="lazy">' +
       '<figcaption class="galerie-legende"><span class="legende">' + fr(p.images[0].alt) + "</span>" +
       (p.images.length > 1 ? '<span class="galerie-nav"><button type="button" class="prec" aria-label="Capture précédente">‹</button><span class="mono compteur">1 / ' + p.images.length + '</span><button type="button" class="suiv" aria-label="Capture suivante">›</button></span>' : "") +
       "</figcaption></figure>" : "";
     var sommaire = ["Intitulé", "Organisation", "Contexte", "Compétences B1", "Environnement", "Démarche", "Productions", "Résultats", "Difficultés", "Liens"]
-      .map(function (t, i) { return '<a href="#' + id + "-r" + (i + 1) + '">' + String(i + 1).padStart(2, "0") + " " + t + "</a>"; }).join("");
+      .map(function (t, i) { return '<a href="#' + id + "-r" + (i + 1) + '">' + t + "</a>"; }).join("");
     var comps = Object.keys(p.comps).map(function (k) {
       return '<li><button type="button" data-comp-btn="' + COMP_OF[k] + '" title="Projeter la compétence ' + COMP_OF[k] + '">' + k + "</button><b>" + fr(SUBS[k].label) + "</b><p>" + fr(p.comps[k]) + "</p></li>";
     }).join("");
@@ -96,7 +96,7 @@
     var chiffres = (p.chiffres || []).map(function (c) { return '<div class="chiffre glass"><b>' + c.n + "</b><span>" + fr(c.l) + "</span></div>"; }).join("");
     var code = p.code ? '<div class="code-bloc"><div class="code-tete"><span>' + esc(p.code.file) + "</span><span>" + p.code.lang + '</span></div><pre tabindex="0"><code>' + highlight(p.code.code, p.code.lang) + '</code></pre><p class="pourquoi">' + fr(p.code.why) + "</p></div>" : "";
     var liens = p.liens.length ? "<ul>" + p.liens.map(function (l) { return '<li><a href="' + l.url + '" target="_blank" rel="noopener">' + fr(l.label) + "</a> <span class=\"mono\">" + esc(l.url.replace(/^https?:\/\//, "")) + "</span></li>"; }).join("") + "</ul>" : "<p>Code consultable sur demande (projet non publié sur un dépôt public).</p>";
-    return '<div class="fiche" id="' + id + '"><header class="fiche-tete"><div class="mono">~/realisations/' + p.slug + " · " + fr(p.periode) + "</div><h2" + (enPage ? "" : ' id="fiche-titre"') + ">" + fr(p.titre) + '</h2><p class="lead">' + fr(p.pitch) + '</p><div class="puces">' + badges(p) + "</div></header>" +
+    return '<div class="fiche" id="' + id + '"><header class="fiche-tete"><div class="mono">' + fr(p.periode) + "</div><h2" + (enPage ? "" : ' id="fiche-titre"') + ">" + fr(p.titre) + '</h2><p class="lead">' + fr(p.pitch) + '</p><div class="puces">' + badges(p) + "</div></header>" +
       galerie + '<nav class="fiche-sommaire" aria-label="Rubriques de la fiche">' + sommaire + "</nav>" +
       r(1, "Intitulé court", "<p><strong>" + fr(p.court) + "</strong></p><p>" + fr(p.resume) + "</p>") +
       r(2, "Organisation, période, lieu, modalité", "<dl><dt>Période</dt><dd>" + fr(p.periode) + "</dd><dt>Lieu</dt><dd>" + fr(p.lieu) + "</dd><dt>Modalité</dt><dd><strong>" + fr(p.modalite) + "</strong></dd><dt>Type</dt><dd>" + TYPES[p.type] + "</dd></dl>") +
@@ -117,7 +117,7 @@
     var p = PROJ[slug]; if (!p) return;
     opener = from || document.activeElement;
     dialogContenu.innerHTML = fiche(p, false);
-    $("#fiche .chemin").textContent = "~/realisations/" + slug;
+    $("#fiche .chemin").textContent = p.titre;
     if (!dialog.open) dialog.showModal();
     dialogContenu.scrollTop = 0;
     history.replaceState(null, "", "#realisations/" + slug);
@@ -207,9 +207,8 @@
   /* ---------- Rendu : parcours (git log) ---------- */
   function renderParcours() {
     $("#gitlog-liste").innerHTML = PARCOURS.map(function (c, i) {
-      return '<li class="commit' + (c.branch ? " branche" : "") + (c.head ? " head" : "") + '" tabindex="0" style="--i:' + i + '"><div class="ligne"><span class="hash">' + c.hash + "</span>" +
-        (c.head ? '<span class="tag">(HEAD -&gt; main)</span>' : "") + (c.branch ? '<span class="tag">(' + c.branch + ")</span>" : "") +
-        c.tags.map(function (t) { return '<span class="tag">(tag: ' + t + ")</span>"; }).join("") +
+      return '<li class="commit' + (c.branch ? " branche" : "") + (c.head ? " head" : "") + '" tabindex="0" style="--i:' + i + '"><div class="ligne">' +
+        (c.head ? '<span class="tag">en cours</span>' : "") + (c.branch ? '<span class="tag">' + c.branch + "</span>" : "") +
         '<span class="date">' + fr(c.date) + '</span><span class="titre">' + fr(c.titre) + "</span></div><p>" + fr(c.detail) + ' <a href="' + c.lien + '">→ voir</a></p></li>';
     }).join("");
   }

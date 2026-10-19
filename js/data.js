@@ -664,7 +664,7 @@ var PARCOURS = [
   { hash: "3f7b0c9", date: "2023 – 2024", titre: "Certification PIX", detail: "Compétences numériques certifiées : recherche d'information, protection des données, création de contenu.", tags: [], lien: "#developpement" },
   { hash: "c81e4aa", date: "avant le BTS", branch: "stage", titre: "Stage en cabinet de kinésithérapie", detail: "Découverte du monde professionnel : installation des appareils de soin pour la clientèle, pratique encadrée des massages sur des personnes âgées. Ce que j'en garde : la relation avec l'usager, la rigueur et la ponctualité.", tags: [], lien: "#profil" },
   { hash: "d41ab62", date: "07/2021", titre: "Diplôme national du brevet", detail: "Collège Jules Massenet, Marseille.", tags: [], lien: "#profil" },
-  { hash: "0000001", date: "2006", titre: "Initial commit", detail: "Marseille.", tags: [], lien: "#top" }
+  { hash: "0000001", date: "2006", titre: "Naissance à Marseille", detail: "Le début de l'histoire.", tags: [], lien: "#top" }
 ];
 
 /* ---------- Veille technologique : les moteurs de jeu ---------- */
